@@ -1,0 +1,5 @@
+
+IQSIIS %{TIMESTAMP_ISO8601:timestamp} %{IPORHOST erverip} %{WORD:method} %{URIPATH:request} %{NOTSPACE:clientquery} %{NUMBER ort} %{NOTSPACE:username} %{IPORHOST:clientip} %{NOTSPACE:useragent} %{NUMBER:response} %{NUMBER cstatus} %{NUMBER:winstatus} %{NUMBER:time_taken} %{NUMBER:byte_sent} %{NUMBER:byte_receive}
+
+
+## IIS if [type] == "iis" { if [x_project] == "iqs_prd" { grok { patterns_dir => "/data/server/logstash/data" match => { "message" => "%{IQSIIS}" } } } else { grok { patterns_dir => "/data/server/logstash/data" match => { "message" => "%{IISLOG}" } } } }
